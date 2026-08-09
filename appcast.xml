@@ -1,15 +1,6 @@
 <?xml version="1.0" standalone="yes"?>
 <rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
-    <channel>
-        <title>MacBat</title>
-        <item>
-            <title>0.7.1</title>
-            <pubDate>Sun, 09 Aug 2026 01:05:29 -0300</pubDate>
-            <sparkle:version>21</sparkle:version>
-            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v0.7.1/MacBat-0.7.1-21.zip" length="3367263" type="application/octet-stream" sparkle:edSignature="sOo6rv8uLUEWaPnZobe/VpN3nfo4tVh9zb/c31VkJ5L057qXnZf9kCwdRoXk5S5/gqbrUPyJH745KAWdO0+tCw=="/>
-        </item>
-    </channel>
+  <channel>
+    <title>MacBat</title>
+  </channel>
 </rss>
