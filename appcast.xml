@@ -9,7 +9,7 @@
             <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v0.7.1/MacBat-0.7.1.zip" length="3367314" type="application/octet-stream" sparkle:edSignature="K8ffO8uiiduNxg8msKFRlJxwDFpbGiLFUjcglyQgHn3GMSJ6XXmbhXF20E2pVAkQL+VgGR1g/Sf31k1Syaj9Cg=="/>
+            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v0.7.1/MacBat-0.7.1.zip" length="3367317" type="application/octet-stream" sparkle:edSignature="XbCRZ0y4uSvIo4mBDBqHq17R5zl486dAwa1zmXYHfE51g2A3lzQdZr8TNCDIbnhW9LsnMoqk9pnwKG63Is4VDQ=="/>
         </item>
     </channel>
 </rss>
