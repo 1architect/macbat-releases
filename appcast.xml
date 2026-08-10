@@ -3,12 +3,12 @@
     <channel>
         <title>MacBat</title>
         <item>
-            <title>0.8.4</title>
-            <pubDate>Mon, 10 Aug 2026 02:50:03 -0300</pubDate>
+            <title>0.8.5</title>
+            <pubDate>Mon, 10 Aug 2026 12:33:07 -0300</pubDate>
             <sparkle:version>25</sparkle:version>
-            <sparkle:shortVersionString>0.8.4</sparkle:shortVersionString>
+            <sparkle:shortVersionString>0.8.5</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v0.8.4/MacBat-0.8.4-25.zip" length="3959372" type="application/octet-stream" sparkle:edSignature="vtpUT1rqek/yREtptin2z4l/UA+Z/xe4G23Ax6Yq2oSEZ+DEWnEltutwh/k4jvQg2luH060azedqSNQAowNIDA=="/>
+            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v0.8.5/MacBat-0.8.5-25.zip" length="3959415" type="application/octet-stream" sparkle:edSignature="H+G/QqD4npiGoHBdYkSNII/UPwOsMdgkGZqkURc10QO4A9Qu0NO+5A8X24ryP7dzFM2wcgYK0JrfVz02QZumBw=="/>
         </item>
     </channel>
 </rss>
