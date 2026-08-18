@@ -1,0 +1,32 @@
+Translations for convenience: LICENSE.pt-BR.md (Portugues), LICENSE.es.md
+(Espanol), LICENSE.fr.md (Francais). The English text below is the reference
+version in case of any discrepancy.
+
+MACBAT PROPRIETARY LICENSE
+
+Copyright © 2026 Gio Mantovani / 1architect. All rights reserved.
+
+MacBat, including its source code, compiled code, interface, visual assets,
+documentation and associated materials, is proprietary software.
+
+A valid licence grants the holder only a personal, limited, revocable,
+non-exclusive and non-transferable right to install and use MacBat under the
+terms attached to the licence purchased.
+
+Without the prior and express written authorisation of the rights holder, you
+may not copy, reproduce, modify, adapt, distribute, make available, publish,
+sublicense, rent, sell, resell or commercially exploit MacBat, in whole or in
+part. You may not attempt to obtain its source code by reverse engineering,
+decompilation or disassembly, except to the extent this restriction is
+prohibited by applicable law.
+
+This licence transfers no intellectual property rights. All rights not
+expressly granted remain reserved to Gio Mantovani / 1architect.
+
+Unauthorised use, reproduction or distribution may result in revocation of the
+licence and in the applicable legal measures.
+
+This repository holds the public release binaries, the update feed, and the
+documentation for MacBat. It does not contain the MacBat source code.
+
+Authorisation requests: macbat@giomantovani.com.br
