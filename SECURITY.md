@@ -56,21 +56,30 @@ keep a process on the efficiency cores, and always undoes that when the process
 is released. Sentinel never changes the CPU or GPU behaviour of the app you have
 in the foreground, and it never touches system-critical processes.
 
+Processes owned by other users — macOS background services, for example — are
+off limits until you authorize Sentinel's system process control from the
+padlock in the Sentinel window. After that, Sentinel can pause such a process
+completely until you release it, and move heavy macOS services to the efficiency
+cores, by hand or automatically with Auto. `kernel_task`, `launchd` and
+`WindowServer` stay protected even then. Revoking the authorization from the
+same padlock releases everything first.
+
 ### Administrator permissions
 
-Two features ask for administrator authorisation the first time you enable them
-(Touch ID or your password). The authorisation installs a `sudoers` rule scoped
-to the exact commands the feature needs, so you are not asked again:
+Up to three features ask for administrator authorisation the first time you
+enable them (Touch ID or your password). The authorisation installs a `sudoers`
+rule scoped to the exact commands the feature needs, so you are not asked again:
 
 | Feature | Commands allowed |
 |---|---|
 | Low Power | `pmset -a lowpowermode 0` / `1` |
 | Controlled | a fixed list of `pmset` display-sleep, Power Nap and wake-on-LAN arguments, plus `tmutil enable` / `disable` |
+| Sentinel, system processes (optional) | `kill -STOP` / `-CONT` — never `-KILL` or `-TERM` — and `taskpolicy -b` / `-B -p <pid>` |
 
 macOS handles the prompt, so MacBat never sees your password, and it installs no
-background daemon. The rules live at `/etc/sudoers.d/macbat-lowpowermode` and
-`/etc/sudoers.d/macbat-economia`, and you can remove them at any time (see
-Uninstall below).
+background daemon. The rules live at `/etc/sudoers.d/macbat-lowpowermode`,
+`/etc/sudoers.d/macbat-economia` and `/etc/sudoers.d/macbat-sentinela-sistema`,
+and you can remove them at any time (see Uninstall below).
 
 ### Code signing
 
@@ -82,6 +91,10 @@ codesign -dv --verbose=4 /Applications/MacBat.app
 ```
 
 ## Uninstall completely
+
+From the app: open the menu, choose **About MacBat**, then **Uninstall…**.
+MacBat moves itself to the Trash and removes its administrator rules, keeping
+your data and licence. To remove everything:
 
 1. Quit MacBat. Turn **Controlled** and **Low Power** off first so their system
    settings revert.
@@ -95,10 +108,10 @@ codesign -dv --verbose=4 /Applications/MacBat.app
    rm -rf ~/Library/Application\ Support/MacBat
    defaults delete com.giovanimanto.macbat
    ```
-4. Remove the administrator rules (only if you ever enabled Low Power or
-   Controlled):
+4. Remove the administrator rules (only if you ever enabled Low Power,
+   Controlled or Sentinel's system process control):
    ```bash
-   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode
+   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode /etc/sudoers.d/macbat-sentinela-sistema
    ```
 5. If MacBat hid the native battery icon, re-enable it in **System Settings →
    Control Center → Battery**.

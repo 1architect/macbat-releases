@@ -2,7 +2,7 @@
 
 # Politique de confidentialité — MacBat
 
-**Dernière mise à jour : 14 août 2026 · S'applique à MacBat 1.0.0 et versions suivantes**
+**Dernière mise à jour : 25 septembre 2026 · S'applique à MacBat 1.0.0 et versions suivantes**
 
 MacBat ne collecte, ne stocke et ne transmet aucune donnée d'usage. Il n'y a ni
 statistiques, ni télémétrie, ni rapport de plantage, ni publicité. MacBat n'a
@@ -101,15 +101,17 @@ savoir ce qu'ils conservent et pendant combien de temps.
 
 ### À propos de l'autorisation administrateur
 
-Deux fonctions demandent une autorisation administrateur la première fois que
-vous les activez : **Économie d'énergie** et **Contrôlé**. C'est macOS qui
-affiche la demande — Touch ID ou votre mot de passe, selon ce que votre Mac
+Jusqu'à trois fonctions demandent une autorisation administrateur la première
+fois que vous les activez : **Économie d'énergie**, **Contrôlé** et le
+**contrôle des processus système**, facultatif, de Sentinelle. macOS affiche sa
+propre fenêtre — Touch ID ou votre mot de passe, selon ce que votre Mac
 utilise — et **MacBat ne voit jamais le mot de passe**. L'autorisation installe
-une règle `sudoers` limitée aux commandes exactes dont la fonction a besoin, une
-liste courte et fixe d'arguments `pmset` et `tmutil`, et n'est plus redemandée.
-La règle n'accorde rien au-delà de ces commandes. Vous
-pouvez retirer les règles en supprimant `/etc/sudoers.d/macbat-economia` et
-`/etc/sudoers.d/macbat-lowpowermode`.
+une règle `sudoers` limitée aux commandes exactes dont la fonction a besoin —
+une courte liste fixe d'arguments `pmset` et `tmutil` ou, pour Sentinelle,
+bloquer et reprendre un processus et l'envoyer sur les cœurs d'efficacité —, et
+n'est plus redemandée. La règle n'autorise rien d'autre que ces commandes. Vous
+pouvez retirer les règles en supprimant `/etc/sudoers.d/macbat-economia`,
+`/etc/sudoers.d/macbat-lowpowermode` et `/etc/sudoers.d/macbat-sentinela-sistema`.
 
 ---
 

@@ -2,7 +2,7 @@
 
 # Política de Privacidade — MacBat
 
-**Última atualização: 14 de agosto de 2026 · Vale para o MacBat 1.0.0 em diante**
+**Última atualização: 25 de setembro de 2026 · Vale para o MacBat 1.0.0 em diante**
 
 O MacBat não coleta, não armazena e não transmite nenhum dado de uso. Não há
 analytics, telemetria, relatório de falhas nem publicidade. O MacBat não tem
@@ -97,13 +97,16 @@ para saber o que eles guardam e por quanto tempo.
 
 ### Sobre a autorização de administrador
 
-Dois recursos pedem autorização de administrador na primeira vez que você os
-liga: **Pouca Energia** e **Controlado**. Quem mostra o pedido é o macOS — Touch
-ID ou senha, o que o seu Mac usar — e **o MacBat nunca vê a senha**. A
-autorização instala uma regra `sudoers` limitada aos comandos exatos de que o
-recurso precisa, uma lista curta e fixa de argumentos do `pmset` e do `tmutil`,
-e não é pedida de novo. A regra não libera nada além desses comandos. Você pode remover as regras apagando
-`/etc/sudoers.d/macbat-economia` e `/etc/sudoers.d/macbat-lowpowermode`.
+Até três recursos pedem autorização de administrador na primeira vez que você
+os liga: **Pouca Energia**, **Controlado** e o **controle de processos do
+sistema**, opcional, do Sentinela. Quem mostra o pedido é o macOS — Touch ID ou
+senha, o que o seu Mac usar — e **o MacBat nunca vê a senha**. A autorização
+instala uma regra `sudoers` limitada aos comandos exatos de que o recurso
+precisa — uma lista curta e fixa de argumentos do `pmset` e do `tmutil` ou, no
+Sentinela, travar e liberar um processo e mandá-lo para os núcleos de
+eficiência —, e não é pedida de novo. A regra não libera nada além desses
+comandos. Você pode remover as regras apagando `/etc/sudoers.d/macbat-economia`,
+`/etc/sudoers.d/macbat-lowpowermode` e `/etc/sudoers.d/macbat-sentinela-sistema`.
 
 ---
 

@@ -57,21 +57,31 @@ proceso en los núcleos de eficiencia, y siempre lo deshace cuando el proceso se
 libera. Centinela nunca cambia el comportamiento de CPU o GPU de la app que tienes
 en primer plano, y nunca toca procesos críticos del sistema.
 
+Los procesos de otros usuarios — los servicios de fondo de macOS, por ejemplo —
+quedan fuera de su alcance hasta que autorices el control de procesos del
+sistema desde el candado de la ventana de Centinela. A partir de ahí, Centinela
+puede bloquear uno de esos procesos por completo hasta que lo liberes, y llevar
+servicios pesados de macOS a los núcleos de eficiencia, a mano o automáticamente
+con Auto. `kernel_task`, `launchd` y `WindowServer` siguen protegidos incluso
+entonces. Revocar la autorización desde el mismo candado lo libera todo antes.
+
 ### Permisos de administrador
 
-Dos funciones piden autorización de administrador la primera vez que las activas
-(Touch ID o tu contraseña). La autorización instala una regla `sudoers` limitada
-a los comandos exactos que la función necesita, y no se vuelve a pedir:
+Hasta tres funciones piden autorización de administrador la primera vez que las
+activas (Touch ID o tu contraseña). La autorización instala una regla `sudoers`
+limitada a los comandos exactos que necesita la función, y no se vuelve a pedir:
 
 | Función | Comandos permitidos |
 |---|---|
 | Bajo consumo | `pmset -a lowpowermode 0` / `1` |
 | Controlado | una lista fija de argumentos de `pmset` para reposo de pantalla, Power Nap y activar por red, más `tmutil enable` / `disable` |
+| Centinela, procesos del sistema (opcional) | `kill -STOP` / `-CONT` — nunca `-KILL` ni `-TERM` — y `taskpolicy -b` / `-B -p <pid>` |
 
-De la autorización se encarga macOS, así que MacBat nunca ve tu contraseña, y no
+De la solicitud se encarga macOS, así que MacBat nunca ve tu contraseña, y no
 instala ningún daemon en segundo plano. Las reglas están en
-`/etc/sudoers.d/macbat-lowpowermode` y `/etc/sudoers.d/macbat-economia`, y puedes
-eliminarlas cuando quieras (mira Desinstalar más abajo).
+`/etc/sudoers.d/macbat-lowpowermode`, `/etc/sudoers.d/macbat-economia` y
+`/etc/sudoers.d/macbat-sentinela-sistema`, y puedes eliminarlas cuando quieras
+(consulta Desinstalar más abajo).
 
 ### Firma de código
 
@@ -84,22 +94,26 @@ codesign -dv --verbose=4 /Applications/MacBat.app
 
 ## Desinstalar por completo
 
+Desde la app: abre el menú, elige **Acerca de MacBat** y luego
+**Desinstalar…**. MacBat se mueve a la Papelera y quita sus reglas de
+administrador, conservando tus datos y tu licencia. Para quitarlo todo:
+
 1. Cierra MacBat. Desactiva **Controlado** y **Bajo consumo** antes, para que los
    ajustes del sistema se reviertan.
 2. Quita la app:
    ```bash
    brew uninstall --cask macbat
    ```
-   o arrastra **MacBat.app** desde Aplicaciones a la Papelera.
+   o arrastra **MacBat.app** de Aplicaciones a la Papelera.
 3. Quita los datos y las preferencias:
    ```bash
    rm -rf ~/Library/Application\ Support/MacBat
    defaults delete com.giovanimanto.macbat
    ```
-4. Quita las reglas de administrador (solo si alguna vez activaste Bajo consumo o
-   Controlado):
+4. Quita las reglas de administrador (solo si alguna vez activaste Bajo consumo,
+   Controlado o el control de procesos del sistema de Centinela):
    ```bash
-   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode
+   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode /etc/sudoers.d/macbat-sentinela-sistema
    ```
 5. Si MacBat ocultó el icono de batería nativo, actívalo de nuevo en
    **Configuración del Sistema → Centro de Control → Batería**.

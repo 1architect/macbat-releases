@@ -60,22 +60,33 @@ et elle annule toujours cela quand le processus est libéré. Sentinelle ne chan
 jamais le comportement CPU ou GPU de l'app que vous avez au premier plan, et
 elle ne touche jamais aux processus critiques du système.
 
+Les processus d'autres utilisateurs — les services d'arrière-plan de macOS, par
+exemple — restent hors de portée tant que vous n'autorisez pas le contrôle des
+processus système avec le cadenas de la fenêtre Sentinelle. Ensuite, Sentinelle
+peut bloquer complètement un de ces processus jusqu'à ce que vous le libériez,
+et envoyer les services macOS gourmands sur les cœurs d'efficacité, à la main
+ou automatiquement avec Auto. `kernel_task`, `launchd` et `WindowServer` restent
+protégés même alors. Révoquer l'autorisation avec le même cadenas libère tout
+d'abord.
+
 ### Autorisations administrateur
 
-Deux fonctions demandent une autorisation administrateur la première fois que
-vous les activez (Touch ID ou votre mot de passe). L'autorisation installe une
-règle `sudoers` limitée aux commandes exactes dont la fonction a besoin, et n'est
-plus redemandée :
+Jusqu'à trois fonctions demandent une autorisation administrateur la première
+fois que vous les activez (Touch ID ou votre mot de passe). L'autorisation
+installe une règle `sudoers` limitée aux commandes exactes dont la fonction a
+besoin, et n'est plus redemandée :
 
 | Fonction | Commandes autorisées |
 |---|---|
 | Économie d'énergie | `pmset -a lowpowermode 0` / `1` |
 | Contrôlé | une liste fixe d'arguments `pmset` pour la veille de l'écran, Power Nap et le réveil par le réseau, plus `tmutil enable` / `disable` |
+| Sentinelle, processus système (facultatif) | `kill -STOP` / `-CONT` — jamais `-KILL` ni `-TERM` — et `taskpolicy -b` / `-B -p <pid>` |
 
-C'est macOS qui gère l'autorisation : MacBat ne voit jamais votre mot de passe,
-et il n'installe aucun daemon en arrière-plan. Les règles se trouvent dans
-`/etc/sudoers.d/macbat-lowpowermode` et `/etc/sudoers.d/macbat-economia`, et vous
-pouvez les retirer à tout moment (voir Désinstaller ci-dessous).
+C'est macOS qui affiche la demande : MacBat ne voit jamais votre mot de passe, et
+il n'installe aucun daemon en arrière-plan. Les règles se trouvent dans
+`/etc/sudoers.d/macbat-lowpowermode`, `/etc/sudoers.d/macbat-economia` et
+`/etc/sudoers.d/macbat-sentinela-sistema`, et vous pouvez les retirer à tout
+moment (voir Désinstaller plus bas).
 
 ### Signature de code
 
@@ -88,22 +99,27 @@ codesign -dv --verbose=4 /Applications/MacBat.app
 
 ## Désinstaller complètement
 
+Depuis l'app : ouvrez le menu, choisissez **À propos de MacBat**, puis
+**Désinstaller…**. MacBat se place dans la Corbeille et retire ses règles
+administrateur, en gardant vos données et votre licence. Pour tout retirer :
+
 1. Quittez MacBat. Désactivez **Contrôlé** et **Économie d'énergie** d'abord,
    pour que les réglages système reviennent.
 2. Retirez l'app :
    ```bash
    brew uninstall --cask macbat
    ```
-   ou faites glisser **MacBat.app** depuis Applications vers la Corbeille.
+   ou faites glisser **MacBat.app** des Applications vers la Corbeille.
 3. Retirez les données et les préférences :
    ```bash
    rm -rf ~/Library/Application\ Support/MacBat
    defaults delete com.giovanimanto.macbat
    ```
-4. Retirez les règles administrateur (seulement si vous avez déjà activé Économie
-   d'énergie ou Contrôlé) :
+4. Retirez les règles administrateur (seulement si vous avez déjà activé
+   Économie d'énergie, Contrôlé ou le contrôle des processus système de
+   Sentinelle) :
    ```bash
-   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode
+   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode /etc/sudoers.d/macbat-sentinela-sistema
    ```
 5. Si MacBat a masqué l'icône de batterie native, réactivez-la dans **Réglages
    Système → Centre de contrôle → Batterie**.

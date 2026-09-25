@@ -2,7 +2,7 @@
 
 # Privacy Policy — MacBat
 
-**Last updated: 14 August 2026 · Applies to MacBat 1.0.0 and later**
+**Last updated: 25 September 2026 · Applies to MacBat 1.0.0 and later**
 
 MacBat does not collect, store, or transmit any usage data. There is no
 analytics, no telemetry, no crash reporting, and no advertising. MacBat has no
@@ -96,14 +96,16 @@ for what they hold and how long they keep it.
 
 ### About administrator authorization
 
-Two features ask for administrator authorization the first time you turn them
-on: **Low Power** and **Controlled**. macOS shows its own dialog — Touch ID or
-your password, whichever your Mac uses — and **MacBat never sees the password
-itself**. The authorization installs a `sudoers` rule limited to the exact
-commands the feature needs, a short fixed list of `pmset` and `tmutil`
-arguments, so you are not asked again. The rule grants nothing beyond those
-commands. You can remove the rules by deleting
-`/etc/sudoers.d/macbat-economia` and `/etc/sudoers.d/macbat-lowpowermode`.
+Up to three features ask for administrator authorization the first time you
+turn them on: **Low Power**, **Controlled**, and Sentinel's optional **system
+process control**. macOS shows its own dialog — Touch ID or your password,
+whichever your Mac uses — and **MacBat never sees the password itself**. The
+authorization installs a `sudoers` rule limited to the exact commands the
+feature needs — a short fixed list of `pmset` and `tmutil` arguments, or, for
+Sentinel, pausing and resuming a process and moving it to the efficiency cores —
+so you are not asked again. The rule grants nothing beyond those commands. You
+can remove the rules by deleting `/etc/sudoers.d/macbat-economia`,
+`/etc/sudoers.d/macbat-lowpowermode` and `/etc/sudoers.d/macbat-sentinela-sistema`.
 
 ---
 

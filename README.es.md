@@ -24,11 +24,14 @@ estable en lugar de saltar de un extremo a otro.
 **Modo Controlado.** Tu Mac ya gestiona bien su propia batería. Lo que no
 siempre gestiona es un proceso en segundo plano quemando energía sin motivo.
 MacBat encuentra esos procesos y reduce su uso de CPU — sin tocar el rendimiento
-de CPU ni GPU de la app que estás usando de verdad.
+de CPU ni GPU de la app que estás usando de verdad. Mide el resultado con
+batería y te muestra cuánta energía menos usó tu Mac.
 
 **Centinela.** El motor detrás del modo Controlado, disponible por separado si
 prefieres conservar el icono de batería original. Elige qué procesos gestiona, o
-fija un proceso en los núcleos de eficiencia.
+fija un proceso en los núcleos de eficiencia. Con tu autorización, también
+lleva servicios de fondo de macOS a los núcleos de eficiencia y bloquea procesos
+de otros usuarios.
 
 **Datos avanzados, de tu Mac y de tu iPhone.** Carga, salud, ciclos, temperatura
 y consumo, registrados a lo largo del tiempo para que veas qué cambió. Conecta
@@ -36,13 +39,19 @@ un iPhone o iPad por cable y MacBat también sigue su batería. Exporta todo a
 CSV.
 
 **Información útil, de día y de noche.** MacBat muestra lo que importa sobre
-consumo, salud de la batería y procesos gestionados en el propio panel, y se
-aparta el resto del tiempo.
+consumo, salud de la batería y procesos gestionados en el propio panel,
+alternando con una lista en vivo de las apps que más energía gastan ahora. El
+resto del tiempo, se aparta.
 
 **Una interfaz de verdad, no otro menú.** Píldoras en Liquid Glass que ponen los
 controles que usas bajo tu puntero. El clic derecho abre el menú avanzado.
 
-**Tu icono, tu elección.** El icono nuevo de macOS 27 o el clásico.
+**Tu icono, tu elección.** Más de 20 estilos de icono de batería, desde el
+aspecto nuevo de macOS 27 hasta diseños clásicos, con la carga en el color de tu
+modo de energía. Muestra el porcentaje dentro del icono o al lado.
+
+**Un comienzo guiado.** El primer arranque te presenta Centinela y el modo
+Controlado, te deja elegir el icono y empieza tu prueba gratuita.
 
 **Cuatro idiomas.** Español, inglés, portugués y francés. MacBat sigue el idioma
 de tu sistema.
@@ -110,7 +119,7 @@ y en la [Política de Seguridad](SECURITY.es.md).
 
 ## Permisos
 
-Dos funciones piden autorización de administrador la primera vez que las
+Hasta tres funciones piden autorización de administrador la primera vez que las
 activas — Touch ID o tu contraseña, según lo que use tu Mac. La autorización
 instala una regla `sudoers` limitada a los comandos exactos que necesitan, y no
 se vuelve a pedir:
@@ -119,15 +128,23 @@ se vuelve a pedir:
 |---|---|
 | Bajo consumo | `pmset -a lowpowermode 0` / `1` |
 | Controlado | una lista fija de argumentos de `pmset` para reposo de pantalla, Power Nap y activar por red, más `tmutil enable` / `disable` |
+| Centinela, procesos del sistema (opcional) | `kill -STOP` / `-CONT` (bloquear y liberar — nunca cerrar) y `taskpolicy -b` / `-B -p` (núcleos de eficiencia, activar y desactivar) |
 
 De la autorización se encarga macOS, así que MacBat nunca ve tu contraseña. No
 instala ningún daemon en segundo plano. Elimina las reglas cuando quieras
-borrando `/etc/sudoers.d/macbat-economia` y
-`/etc/sudoers.d/macbat-lowpowermode`.
+borrando `/etc/sudoers.d/macbat-economia`, `/etc/sudoers.d/macbat-lowpowermode`
+y `/etc/sudoers.d/macbat-sentinela-sistema`. La regla de Centinela también se
+puede revocar desde el candado de la ventana de Centinela.
 
 ---
 
 ## Desinstalar
+
+Lo más rápido: abre el menú, elige **Acerca de MacBat** y luego
+**Desinstalar…**. MacBat se mueve a la Papelera y quita sus reglas de
+administrador. Tus datos y tu licencia se conservan, por si vuelves.
+
+Para quitarlo todo a mano:
 
 1. Cierra MacBat. Desactiva **Controlado** y **Bajo consumo** antes, para que los ajustes del sistema se reviertan.
 2. Quita la app: `brew uninstall --cask macbat`, o arrastra **MacBat.app** a la Papelera.
@@ -136,9 +153,9 @@ borrando `/etc/sudoers.d/macbat-economia` y
    rm -rf ~/Library/Application\ Support/MacBat
    defaults delete com.giovanimanto.macbat
    ```
-4. Quita las reglas de administrador, solo si activaste Bajo consumo o Controlado:
+4. Quita las reglas de administrador, solo si activaste Bajo consumo, Controlado o el control de procesos del sistema de Centinela:
    ```bash
-   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode
+   sudo rm -f /etc/sudoers.d/macbat-economia /etc/sudoers.d/macbat-lowpowermode /etc/sudoers.d/macbat-sentinela-sistema
    ```
 5. Si el icono de batería nativo está oculto, actívalo de nuevo en **Configuración del Sistema → Centro de Control → Batería**.
 
