@@ -100,7 +100,12 @@ fois.
 [**Acheter une licence**](https://giovaniman8.gumroad.com/l/macbat)
 
 Pour activer : ouvrez le menu, choisissez l'élément de licence et saisissez
-l'adresse e-mail et la clé reçues dans l'e-mail d'achat.
+l'adresse e-mail et la clé reçues dans l'e-mail d'achat. L'adresse doit être
+celle de l'achat.
+
+Une licence active MacBat sur **3 Mac** au maximum. Besoin de plus, ou vous avez
+réinstallé et atteint la limite ? Écrivez au support et le compteur est remis à
+zéro.
 
 ---
 

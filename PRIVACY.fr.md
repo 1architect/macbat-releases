@@ -68,18 +68,20 @@ relève de la
 
 ### 2. Quand vous activez votre licence
 
-Quand vous saisissez votre clé de licence, MacBat envoie une requête à Gumroad,
-la boutique qui traite les achats de MacBat :
+Quand vous saisissez votre clé de licence, MacBat envoie deux requêtes à
+Gumroad, la boutique qui traite les achats de MacBat — l'une vérifie la clé sans
+compter d'activation, puis, seulement si la vérification réussit, l'autre la
+compte :
 
 ```
 POST https://api.gumroad.com/v2/licenses/verify
 ```
 
-Cette requête contient trois champs, et rien d'autre :
+Chaque requête contient trois champs, et rien d'autre :
 
 - l'identifiant du produit MacBat
 - la clé de licence que vous avez saisie
-- un indicateur qui compte l'activation
+- un indicateur qui dit s'il faut compter l'activation
 
 **L'adresse e-mail que vous saisissez n'est pas envoyée.** MacBat la compare sur
 votre Mac avec l'adresse que Gumroad renvoie pour cette clé. Votre adresse reste

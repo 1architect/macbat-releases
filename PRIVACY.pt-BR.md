@@ -65,18 +65,19 @@ GitHub dá a essa requisição está na
 
 ### 2. Quando você ativa sua licença
 
-Quando você digita a chave de licença, o MacBat envia uma requisição à Gumroad,
-a loja que processa as compras do MacBat:
+Quando você digita a chave de licença, o MacBat envia duas requisições à
+Gumroad, a loja que processa as compras do MacBat — uma que confere a chave sem
+contar ativação e, só se a conferência passar, outra que conta:
 
 ```
 POST https://api.gumroad.com/v2/licenses/verify
 ```
 
-Essa requisição leva três campos, e mais nada:
+Cada requisição leva três campos, e mais nada:
 
 - o ID do produto MacBat
 - a chave de licença que você digitou
-- um sinalizador que conta a ativação
+- um sinalizador que diz se a ativação deve ser contada
 
 **O e-mail que você digita não é enviado.** O MacBat compara o endereço no seu
 próprio Mac com o que a Gumroad devolve para aquela chave. Seu e-mail fica na

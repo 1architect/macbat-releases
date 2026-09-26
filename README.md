@@ -95,7 +95,10 @@ is no account to create and no subscription — you buy it once.
 [**Buy a licence**](https://giovaniman8.gumroad.com/l/macbat)
 
 To activate: open the menu, choose the licence item, and enter the e-mail and
-key from your purchase e-mail.
+key from your purchase e-mail. The e-mail must be the one you bought with.
+
+One licence activates MacBat on up to **3 Macs**. Need more, or reinstalled and
+hit the limit? Write to support and the count is reset.
 
 ---
 

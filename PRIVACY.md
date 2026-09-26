@@ -64,18 +64,19 @@ is covered by the [GitHub Privacy Statement](https://docs.github.com/site-policy
 
 ### 2. When you activate your licence
 
-When you enter your licence key, MacBat sends one request to Gumroad, the store
-that processes MacBat purchases:
+When you enter your licence key, MacBat sends two requests to Gumroad, the store
+that processes MacBat purchases — one to check the key without counting an
+activation, then, only if the check passes, one that counts it:
 
 ```
 POST https://api.gumroad.com/v2/licenses/verify
 ```
 
-That request contains three fields, and nothing else:
+Each request contains three fields, and nothing else:
 
 - the MacBat product ID
 - the licence key you typed
-- a flag that counts the activation
+- a flag that says whether to count the activation
 
 **The e-mail address you type is not sent.** MacBat compares it on your Mac
 with the address Gumroad returns for the key. Your address stays on your

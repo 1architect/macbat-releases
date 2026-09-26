@@ -67,18 +67,19 @@ petición está en la
 
 ### 2. Cuando activas tu licencia
 
-Cuando escribes tu clave de licencia, MacBat envía una petición a Gumroad, la
-tienda que procesa las compras de MacBat:
+Cuando escribes tu clave de licencia, MacBat envía dos peticiones a Gumroad, la
+tienda que procesa las compras de MacBat — una que comprueba la clave sin contar
+la activación y, solo si la comprobación pasa, otra que la cuenta:
 
 ```
 POST https://api.gumroad.com/v2/licenses/verify
 ```
 
-Esa petición lleva tres campos, y nada más:
+Cada petición lleva tres campos, y nada más:
 
 - el ID de producto de MacBat
 - la clave de licencia que escribiste
-- un indicador que cuenta la activación
+- un indicador que dice si se cuenta la activación
 
 **El correo que escribes no se envía.** MacBat lo compara en tu propio Mac con
 la dirección que Gumroad devuelve para esa clave. Tu correo se queda en tu

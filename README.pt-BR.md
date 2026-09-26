@@ -98,7 +98,10 @@ vez.
 [**Comprar uma licença**](https://giovaniman8.gumroad.com/l/macbat)
 
 Para ativar: abra o menu, escolha o item de licença e digite o e-mail e a chave
-que vieram no e-mail da compra.
+que vieram no e-mail da compra. O e-mail precisa ser o mesmo da compra.
+
+Uma licença ativa o MacBat em até **3 Macs**. Precisa de mais, ou reinstalou e
+chegou ao limite? Escreva para o suporte e a contagem é zerada.
 
 ---
 
