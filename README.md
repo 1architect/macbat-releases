@@ -11,6 +11,7 @@ CPU, needs no root access, and **collects no data about you**.
 [**Download MacBat**](#install) ·
 [Buy a licence](https://giovaniman8.gumroad.com/l/macbat) ·
 [Privacy Policy](PRIVACY.md) ·
+[Terms of Service](TERMS.md) ·
 [Security](SECURITY.md)
 
 ---

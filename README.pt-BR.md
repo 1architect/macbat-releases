@@ -12,6 +12,7 @@ você**.
 [**Baixar o MacBat**](#instalar) ·
 [Comprar uma licença](https://giovaniman8.gumroad.com/l/macbat) ·
 [Política de Privacidade](PRIVACY.pt-BR.md) ·
+[Termos de Serviço](TERMS.pt-BR.md) ·
 [Segurança](SECURITY.pt-BR.md)
 
 ---

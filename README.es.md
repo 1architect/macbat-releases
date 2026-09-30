@@ -11,6 +11,7 @@ macOS esconde y calla los procesos en segundo plano que la agotan. Usa menos del
 [**Descargar MacBat**](#instalar) ·
 [Comprar una licencia](https://giovaniman8.gumroad.com/l/macbat) ·
 [Política de Privacidad](PRIVACY.es.md) ·
+[Términos de Servicio](TERMS.es.md) ·
 [Seguridad](SECURITY.es.md)
 
 ---

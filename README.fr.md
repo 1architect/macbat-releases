@@ -12,6 +12,7 @@ aucune donnée sur vous**.
 [**Télécharger MacBat**](#installation) ·
 [Acheter une licence](https://giovaniman8.gumroad.com/l/macbat) ·
 [Politique de confidentialité](PRIVACY.fr.md) ·
+[Conditions d'utilisation](TERMS.fr.md) ·
 [Sécurité](SECURITY.fr.md)
 
 ---
