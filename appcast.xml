@@ -8,6 +8,21 @@
             <sparkle:version>49</sparkle:version>
             <sparkle:shortVersionString>1.1.3</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[## MacBat
+
+Unlock lifetime access to MacBat's Sentinel, Controlled mode and advanced battery info. Try the app at macbat.app (requires macOS 26 or later).
+
+MacBat is a Mac app that:
+
+- **Brings back battery time remaining.** MacBat uses its own algorithm to bring this beloved feature back to your menu bar with accuracy.
+- **Shows advanced power data from your Mac, iPhone and iPad.** Access and store battery status data to track changes over time, including battery health, capacity and charge cycles. Connect an iPhone or iPad with a cable to see its data too. Includes CSV export.
+- **Introduces a new power-saving mode: Controlled.** Your Mac already manages its battery well, but it does not always manage background processes that waste energy. Using Sentinel, MacBat tracks less important processes that consume too many resources and reduces their CPU usage without affecting CPU or GPU performance. It also measures the result and shows how much less power your Mac used while Controlled was on.
+- **Sentinel.** The same technology behind Controlled mode can be used on its own if you prefer to keep the Mac's original battery icon. You can also choose which processes Sentinel should manage and assign processes exclusively to efficiency cores, reducing power consumption even further.
+- **Choose your icon.** Pick from more than 20 battery icon styles, from the new macOS 27 look to classic designs, with a colored fill for each power mode. Show the percentage inside the icon or next to it, and change it at any time.
+- **Liquid Glass design.** A living, functional interface based on Apple's design guidelines that puts the controls that matter right at your pointer. Advanced controls are there when you need them too: just right-click.
+- **Insights, day and night.** Key insights into power consumption, battery health and managed processes in the main interface, alternating with a live list of the apps using the most energy right now.
+- **Less than 1% CPU usage.** Built entirely in Swift, MacBat runs without root access and does not collect or transmit usage data. Available in English, Portuguese, Spanish and French.
+]]></description>
             <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v1.1.3/MacBat-1.1.3.zip" length="5222635" type="application/octet-stream" sparkle:edSignature="DVt1erA1a56c9dEDMLnUAO2E98PZKuNx3aPSEyL5jEOtDnW0o/dlZKZ5BiG10E/5IQD2Cxg3UQantsBONvnQCQ=="/>
         </item>
     </channel>
