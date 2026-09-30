@@ -3,12 +3,20 @@
     <channel>
         <title>MacBat</title>
         <item>
-            <title>1.1.1</title>
-            <pubDate>Sun, 27 Sep 2026 15:46:55 -0300</pubDate>
-            <sparkle:version>47</sparkle:version>
-            <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
+            <title>1.1.2</title>
+            <pubDate>Tue, 29 Sep 2026 23:16:50 -0300</pubDate>
+            <sparkle:version>48</sparkle:version>
+            <sparkle:shortVersionString>1.1.2</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>26.0</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v1.1.1/MacBat-1.1.1.zip" length="5147829" type="application/octet-stream" sparkle:edSignature="V3Ey/aLKGXP7HL12sVVCM+GjNHtRf+0eMXoGKCgjgzf3xdP2SV+O8mV48VXnzf9gTLCZdAWQaPxgU9Y0CXxtAA=="/>
+            <description sparkle:format="markdown"><![CDATA[## MacBat 1.1.2
+
+- **Notarized by Apple.** MacBat is now signed with a Developer ID and notarized, so macOS opens it without the "unidentified developer" warning.
+- **A single password prompt during setup.** Turning on the Sentinel in onboarding now authorizes the Sentinel, Controlled mode and Low Power Mode together, so switching power modes later no longer asks again.
+- **Fixed hiding the system battery icon on a new user account**, where the setting did not exist yet and the app reported an error.
+- **Trilho icon:** the charging bolt now sits outside the battery.
+- **Icon picker after the trial ends:** locked icons are simply dimmed, without a padlock.
+]]></description>
+            <enclosure url="https://github.com/1architect/macbat-releases/releases/download/v1.1.2/MacBat-1.1.2.zip" length="5222067" type="application/octet-stream" sparkle:edSignature="3hBd3isoRngUgap0IebmlZbs6gjOBqnCH/oEuOMFOx5AWLbJtLipZ9Pza5PtQoOO3hjnyBforXUVb7N6zqi4CQ=="/>
         </item>
     </channel>
 </rss>
